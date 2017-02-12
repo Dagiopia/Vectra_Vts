@@ -1,0 +1,22 @@
+{% load static %}
+    {% include 'header.html' %}
+        
+    <div id="wrapper">
+            {% include 'sidebar.html' %}
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid xyz">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img src="{% static 'img/bg.jpg' %}" class="img-responsive" alt="Map">
+                    </div>
+                </div>
+            </div>
+        </div>
+	 {% for vehicle ,gps_data in vehicle_location_pair.items %}
+ 	 	<h1>Vehicle{{vehicle.name}} is located @ {{gps_data.longtuide_pos}} , {{gps_data.latituide_pos}}  </h1>
+         {%endfor%}
+        <!-- /#page-content-wrapper -->
+
+    </div><!-- /#wrapper -->
+{% include 'footer.html' %}

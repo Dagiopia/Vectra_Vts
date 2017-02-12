@@ -1,0 +1,349 @@
+{% load static %}
+    {% include 'header.html' %}
+        
+    <div id="wrapper">
+            {% include 'sidebar.html' %}
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="well">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- accordion panel group -->
+                        <div class="panel-group" id="accordion">
+                        	<div class="row">
+                        		<div class="col-sm-12">
+                        			<h2 id="HowCanWeHelpYou"><strong>How Can We Help You?</strong></h2>
+                        		</div><!-- class-sm-12 -->
+                           	</div><!-- row -->
+
+                           	<div class="row" id="BodyOfTheText">
+                           		<div class="col-sm-12">
+	                           		<ul>
+	                           			<li>
+	                           				<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">Manage your VTS account &raquo;</a></p>
+										
+											<div class="collapse in" id="collapseOne">
+												<ul>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseOneOne">Sign Out &raquo;</a></p>
+														<div id="Details">
+															<ol class="collapse" id="collapseOneOne">
+																<li>
+																	<p>Click on the Nav Drawer Button on the Navigation Bar
+																	<img class="img-responsive" src="{% static 'img/helpics/navButton.png' %}" alt="navButton">
+																	 Or Goto the Right Corner of the Page and click on the sign out Button.
+																	 <img class="img-responsive" src="{% static 'img/helpics/SignOut.png' %}" alt="SignOut">
+																	 </p>
+																</li>
+																<li>
+																	<p>If you click on the Nav Drawer Button the Navigation Bar will appear on the left side of the page. Then click on the Sign Out option.</p>
+																</li>
+															</ol>
+														</div>
+													</li>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseOneTwo">View your Personal Information&raquo;</a></p>
+														<div id="Details">
+															<ol class="collapse" id="collapseOneTwo">
+																<li>
+																	<p>Click on the Nav Drawer Button on the Navigation Bar
+																	<img class="img-responsive" src="{% static 'img/helpics/navButton.png' %}" alt="navButton">
+																	 Or Goto the Right Corner of the Page and click on the Profile Button.
+																	 <img class="img-responsive" src="{% static 'img/helpics/Profile.png' %}" alt="Profile">
+																	 </p>
+																</li>
+																<li>
+																	<p>If you click on the Nav Drawer Button the Navigation Bar will appear on the left side of the page. Then select the Profile option.</p>
+																</li>
+																<li>
+																	<p>Then your complete Profile Information will appear on the right side of the web page.</p>
+																</li>
+															</ol>
+														</div>
+													</li>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseOneThree">Edit your Personal Information&raquo;</a></p>
+														<div id="Details">
+															<ol class="collapse" id="collapseOneThree">
+																<li>
+																	<p>Click the Nav Drawer Button on the Navigation Bar
+																	<img class="img-responsive" src="{% static 'img/helpics/navButton.png' %}" alt="navButton">
+																	 Or In the top right,click Profile Button.
+																	 <img class="img-responsive" src="{% static 'img/helpics/Profile.png' %}" alt="Profile">
+																	 </p>
+																</li>
+																<li>
+																	<p>If you click the Nav Drawer Button the Navigation Bar will appear on the left side of the page. And click on the Profile option.</p>
+																</li>
+																<li>
+																	<p>Then click on the edit Button found on the top right side of the page.</p>
+																	<img class="img-responsive" src="{% static 'img/helpics/Edit.png' %}" alt="Edit">
+																</li>
+																<li>
+																	<p>Finally, All your Information will appear on the right side of the web page. After you finish Editing click on the save Button or you can cancel the whole Process.</p>
+																</li>
+															</ol>
+														</div>
+													</li>
+												</ul>
+											</div>
+	                           			</li>
+
+	                           			<li>
+	                           				<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo">Manage your Vehicles Information &raquo;</a></p>
+
+											<div class="collapse" id="collapseTwo">
+												<ul>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwoOne">View Vehicles Information &raquo;</a></p>
+														<div id="Details">
+															<ol class="collapse" id="collapseTwoOne">
+																<li>
+																	<p>Click the Nav Drawer Button on the Navigation Bar
+																	<img class="img-responsive" src="{% static 'img/helpics/navButton.png' %}" alt="navButton">
+																	 </p>
+																</li>
+																<li>
+																	<p>On the Navigation Bar, Click on Vehicle Option.</p>
+																</li>
+																<li>
+																	<p>Then All your vehicles Name will appear on the right side of the web page.</p>
+																</li>
+																<li>
+																	<p>Finally, Click on the vehicle you want to view the information.</p>
+																</li>
+															</ol>
+														</div>
+													</li>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwoTwo">Edit Vehicle Information &raquo;</a></p>
+														<div id="Details">
+															<ol class="collapse" id="collapseTwoTwo">
+																<li>
+																	<p>Click the Nav Drawer Button on the Navigation Bar
+																	<img class="img-responsive" src="{% static 'img/helpics/navButton.png' %}" alt="navButton">
+																	 </p>
+																</li>
+																<li>
+																	<p>On the Navigation Bar, Click on Vehicle Option.</p>
+																</li>
+																<li>
+																	<p>All your vehicles Name will appear on the right side of the web page.</p>
+																</li>
+																<li>
+																	<p>Then, Click on the vehicle you want to Edit the information.</p>
+																</li>
+																<li>
+																	<p>Finally, on the right top of the vehicle information panel, Click on the Edit Button.</p>
+																	<img class="img-responsive" src="{% static 'img/helpics/Edit.png' %}" alt="Edit">
+																</li>	
+																<li>
+																	<p>After you finish editing, Click on the Save Button.</p>
+																</li>
+															</ol>
+														</div>
+													</li>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwoThree">Remove a vehicle &raquo;</a></p>
+														<div id="Details">
+															<ol class="collapse" id="collapseTwoTwo">
+																<li>
+																	<p>Click the Nav Drawer Button on the Navigation Bar
+																	<img class="img-responsive" src="{% static 'img/helpics/navButton.png' %}" alt="navButton">
+																	 </p>
+																</li>
+																<li>
+																	<p>On the Navigation Bar, Click on Vehicle Option.</p>
+																</li>
+																<li>
+																	<p>All your vehicles Name will appear on the right side of the web page.</p>
+																</li>
+																<li>
+																	<p>Then, Click on the vehicle you want to Remove the information.</p>
+																</li>
+																<li>
+																	<p>Finally, on the right top of the vehicle information panel, Click on the Remove Button.</p>
+																	<img class="img-responsive" src="{% static 'img/helpics/Edit.png' %}" alt="Edit">
+																</li>	
+															</ol>
+														</div>
+													</li>
+												</ul>
+											</div>
+	                           			</li>
+
+	                           			<li>
+	                           				<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree">Manage your Drivers Information &raquo;</a></p>
+
+											<div class="collapse" id="collapseThree">
+												<ul>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseThreeOne">View Drivers Information &raquo;</a></p>
+														<div id="Details">
+															<ol class="collapse" id="collapseThreeOne">
+																<li>
+																	<p>Click the Nav Drawer Button on the Navigation Bar
+																	<img class="img-responsive" src="{% static 'img/helpics/navButton.png' %}" alt="navButton">
+																	 </p>
+																</li>
+																<li>
+																	<p>On the Navigation Bar, Click on Drivers Option.</p>
+																</li>
+																<li>
+																	<p>Then All your Drivers Name will appear on the right side of the web page.</p>
+																</li>
+																<li>
+																	<p>Finally, Click on the Driver you want to view the information.</p>
+																</li>
+															</ol>
+														</div>
+													</li>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseThreeTwo">Edit Driver Information &raquo;</a></p>
+														<div id="Details">
+															<ol class="collapse" id="collapseThreeTwo">
+																<li>
+																	<p>Click the Nav Drawer Button on the Navigation Bar
+																	<img class="img-responsive" src="{% static 'img/helpics/navButton.png' %}" alt="navButton">
+																	 </p>
+																</li>
+																<li>
+																	<p>On the Navigation Bar, Click on Driver Option.</p>
+																</li>
+																<li>
+																	<p>All your Drivers Name will appear on the right side of the web page.</p>
+																</li>
+																<li>
+																	<p>Then, Click on the Driver you want to Edit the information.</p>
+																</li>
+																<li>
+																	<p>Finally, on the right top of the Driver information panel, Click on the Edit Button.</p>
+																	<img class="img-responsive" src="{% static 'img/helpics/Edit.png' %}" alt="Edit">
+																</li>	
+																<li>
+																	<p>After you finish editing, Click on the Save Button.</p>
+																</li>
+															</ol>
+														</div>
+													</li>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseThreeThree">Remove a Driver &raquo;</a></p>
+														<div id="Details">
+															<ol class="collapse" id="collapseThreeThree">
+																<li>
+																	<p>Click the Nav Drawer Button on the Navigation Bar
+																	<img class="img-responsive" src="{% static 'img/helpics/navButton.png' %}" alt="navButton">
+																	 </p>
+																</li>
+																<li>
+																	<p>On the Navigation Bar, Click on Drivers Option.</p>
+																</li>
+																<li>
+																	<p>All your Drivers Name will appear on the right side of the web page.</p>
+																</li>
+																<li>
+																	<p>Then, Click on the Driver you want to Remove the information.</p>
+																</li>
+																<li>
+																	<p>Finally, on the right top of the Drivers information panel, Click on the Remove Button.</p>
+																	<img class="img-responsive" src="{% static 'img/helpics/Edit.png' %}" alt="Edit">
+																</li>	
+															</ol>
+														</div>
+													</li>
+												</ul>
+											</div>
+	                           			</li>
+
+	                           			<li>
+	                           				<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseFour">Tracking Your Vehicles &raquo;</a></p>
+
+											<div class="collapse" id="collapseFour">
+												<ul>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseFourOne">Sign Out &raquo;</a></p>
+														<div id="Details">
+															<ol class="collapse" id="collapseTwoTwo">
+																<li>
+																	<p>Click the Nav Drawer Button on the Navigation Bar
+																	<img class="img-responsive" src="{% static 'img/helpics/navButton.png' %}" alt="navButton">
+																	 </p>
+																</li>
+																<li>
+																	<p>On the Navigation Bar, Click on Vehicle Option.</p>
+																</li>
+																<li>
+																	<p>All your vehicles Name will appear on the right side of the web page.</p>
+																</li>
+																<li>
+																	<p>Then, Click on the vehicle you want to Remove the information.</p>
+																</li>
+																<li>
+																	<p>Finally, on the right top of the vehicle information panel, Click on the Remove Button.</p>
+																	<img class="img-responsive" src="{% static 'img/helpics/Edit.png' %}" alt="Edit">
+																</li>	
+															</ol>
+														</div>
+													</li>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseFourTwo">Edit your Personal Information&raquo;</a></p>
+														<div id="Details">
+															<p class="collapse" id="collapseFourTwo">to edit your personal Informaton</p>
+														</div>
+													</li>
+												</ul>
+											</div>
+	                           			</li>
+
+	                           			<li>
+	                           				<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseFive">Generating a Report about Your Vehicles &raquo;</a></p>
+
+											<div class="collapse" id="collapseFive">
+												<ul>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseFiveOne">Sign Out &raquo;</a></p>
+														<div id="Details">
+															<p class="collapse" id="collapseFiveOne">to sign out</p>
+														</div>
+													</li>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseFiveTwo">Edit your Personal Information&raquo;</a></p>
+														<div id="Details">
+															<p class="collapse" id="collapseFiveTwo">to edit your personal Informaton</p>
+														</div>
+													</li>
+												</ul>
+											</div>
+	                           			</li>
+
+	                           			<li>
+	                           				<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseSix">Fix a problem &raquo;</a></p>
+
+											<div class="collapse" id="collapseSix">
+												<ul>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseSixOne">Sign Out &raquo;</a></p>
+														<div id="Details">
+															<p class="collapse" id="collapseSixOne">to sign out</p>
+														</div>
+													</li>
+													<li>
+														<p><a data-toggle="collapse" data-parent="#accordion" data-target="#collapseSixTwo">Edit your Personal Information&raquo;</a></p>
+														<div id="Details">
+															<p class="collapse" id="collapseSixTwo">to edit your personal Informaton</p>
+														</div>
+													</li>
+												</ul>
+											</div>
+	                           			</li>
+	                           		</ul>
+      							</div>
+                           	</div>
+                    	</div>
+                    </div> 
+                </div>
+            </div><!-- well -->
+        </div><!-- /#page-content-wrapper -->
+    </div><!-- /#wrapper -->
+   
+{% include 'footer.html' %}

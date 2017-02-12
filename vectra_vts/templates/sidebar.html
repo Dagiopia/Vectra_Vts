@@ -1,0 +1,102 @@
+{% load static %}
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                <!-- separater -->
+                <li role="separator" class="divider"></li>
+
+                <!-- Profile Tab -->
+		{% if here == 'profile' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'profile' %}
+                <li>
+		{% endif %}
+                    <a href="/dashboard/dashboard/profile/{{user.id}}/">
+                        <span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span> Profile
+                        <!-- <span class="fa-stack fa-lg pull-right"><i class="fa fa-caret-down fa-stack-1x "></i></span> -->
+                    </a>
+
+                {% if here == 'logout' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'logout' %}
+                <li>
+		{% endif %}
+                <!-- Sign out Tab -->
+                <li><a href="/user_logout/" ><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-out fa-stack-1x "></i></span> Sign Out</a></li>
+                
+                <!-- separater -->
+                <li role="separator" class="divider"></li>
+
+                <!-- Map Tab -->
+		{% if here == 'map' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'map' %}
+                <li>
+		{% endif %}
+                    <a href="/dashboard/dashboard/{{user.id}}/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-map-marker fa-stack-1x "></i></span> Map</a>
+                </li>
+
+                <!-- Vehicle Tab -->
+		{% if here == 'vehicle' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'vehicle' %}
+                <li>
+		{% endif %}
+                    <a href="/dashboard/manage_vehicles/{{user.id}}/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-car fa-stack-1x "></i></span> Vehicles
+                    <!-- <span class="fa-stack fa-lg pull-right"><i class="fa fa-caret-down fa-stack-1x "></i></span> --></a>
+
+                </li>
+
+                <!-- Drivers Tab -->
+                {% if here == 'driver' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'driver' %}
+                <li>
+		{% endif %}
+                    <a href="/dashboard/manage_drivers/{{user.id}}/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-male fa-stack-1x "></i></span>Drivers
+                    <!-- <span class="fa-stack fa-lg pull-right"><i class="fa fa-caret-down fa-stack-1x "></i></span> --></a>
+
+                </li>
+
+                <!-- Separeter -->
+                <li role="separator" class="divider"></li>
+
+                <!-- Report Tab -->
+		{% if here == 'report' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'report' %}
+                <li>
+		{% endif %}
+                    <a href="/report/{{user.id}}/"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>Report</a>
+                </li>
+
+                 <!-- Separeter -->
+                <li role="separator" class="divider"></li>
+
+                 <!-- Other Info Tab -->
+		{% if here == 'help' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'help' %}
+                <li>
+		{% endif %}
+				
+                    <a href="/help/{{user.id}}/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wrench fa-stack-1x "></i></span>Help</a></li>
+		{% if here == 'about' %}
+                <li class = "active">
+		{% endif %}
+		{% if here != 'about' %}
+                <li>
+		{% endif %}
+			 
+                    <a href="/about/{{user.id}}/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-compass fa-stack-1x "></i></span>About Us</a>
+
+                </li>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->

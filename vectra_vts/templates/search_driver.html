@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+	   <meta charset  = "utf-8">
+	   <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+	   <meta name = "viewport" content  = "width = divice-width , initial-scale = 1">
+	   <title>Vectra Vts</title>
+	</head>
+	<body>
+
+          {% for driver in drivers %} 
+		  <div class=" col-md-2">
+		    <div class="thumbnail">
+		      <img class  = "img-responsive" src = "{{MEDIA_URL}}/{{driver.person.photo}}" ,alt = "logo" data-toggle="modal" data-target="#project1">
+		     
+		      <div class="caption">
+		        <h3>{{driver.person.first_name}}</h3>
+		        
+		      </div>
+		    </div>
+		  </div>
+		  {% endfor %}
+
+	</body>

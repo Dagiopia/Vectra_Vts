@@ -1,0 +1,68 @@
+{% load static %}
+    {% include 'header.html' %}
+        
+    <div id="wrapper">
+            {% include 'sidebar.html' %}
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="well">
+                <a href="/dashboard/add_vehicle/{{user.id}}/" id="floating-button" class="btn btn-xs btn-success fa-border">
+                    <span class="fa-stack fa fa.pull-left">
+                        <i class="fa fa-plus-circle fa-stack-1x "></i>
+                    </span>Add Vehicle
+                </a>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- accordion panel group -->
+                        <div class="panel-group" id="accordion">
+
+                            <!-- panel group -->
+                            {% if alert %}
+                             <h4 style="padding-left: 250px; color: red;"> No Vehicles Found with the name "{{error_vehicle}}"</h4>
+                            {% endif %}   
+			    <!-- for loop-->
+			    {% for vehicle in vehicles %}
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion" href="#{{vehicle.id}}">{{vehicle.name}}</a>
+                                    </h4>
+                                </div><!-- panel-heading -->
+                                <div id="{{vehicle.id}}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+
+                                        <p class="pull-right"><a href="/report/vehicle/{{user.id}}/{{vehicle.id}}/"> Report </a> |<a href="/dashboard/edit_vehicle/{{user.id}}/{{vehicle.id}}/"> Edit </a> |{% if vehicle.status == 'A'%}<a href="/dashboard/deactivate_vehicle/{{user.id}}/{{vehicle.id}}/" style="color: red;">   Deactivate {% endif %}
+	{% if vehicle.status == 'D'%}<a href="/dashboard/activate_vehicle/{{user.id}}/{{vehicle.id}}/" style="color: green;"> activate {% endif %}|<a href="/dashboard/remove_vehicle/{{user.id}}/{{vehicle.id}}/" style="color: red;"> Remove </a>
+	</a></p>
+                                        </br></br>
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <div>
+                                                    <ul>
+                                                        <li><p>Vehicle Plate: {{vehicle.plate_number}} </p></li>
+                                                        <li><p>Vehicle Name: {{vehicle.name}}</p></li>
+                                                        <li><p>Vehicle Model: {{vehicle.v_model}}</p></li>
+							<li><p>Driver Name: {{vehicle.driver.person.first_name}}</p></li>
+                                                    </ul>
+                                                </div><!-- div -->
+                                            </div><!-- col-sm-6 -->
+                                            <div class="col-sm-4">
+                                                <img src="{{MEDIA_URL}}/{{vehicle.image}}" class="img-responsive" alt="Car">
+                                            </div><!-- col-sm-6 -->
+                                        </div><!-- row -->
+                                    </div><!-- panel-body -->
+                                </div><!-- collapse1 -->
+                            </div><!-- panel -->
+			    <!--end of for loop-->
+                            <!-- panel group -->
+                            {% endfor %}
+                            
+                         </div> 
+                    </div>
+                </div><!-- row -->
+            </div><!-- well -->
+        </div><!-- /#page-content-wrapper -->
+
+    </div><!-- /#wrapper -->
+  
+  {% include 'footer.html' %}  

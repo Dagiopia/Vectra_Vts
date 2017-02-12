@@ -1,0 +1,63 @@
+
+            <div class="well">
+                <div class="row">
+                    <h3 style="padding-left: 30px;padding-bottom: 20px;">Report for <strong>{{vehicle.plate_number}}</strong> {{now}} </h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <span ><h4>
+                        <ul style="list-style: none;" class="list-group">
+                            <li class="list-group-item"><strong>Vehicle Plate:</strong> {{vehicle.plate_number}} </li>
+                            <li class="list-group-item"><strong>Vehicle Name:</strong> {{vehicle.name}} </li>
+                            <li class="list-group-item"><strong>Vehicle Model:</strong> {{vehicle.v_model}} </li>
+                            <li class="list-group-item"><strong>Driver Name:</strong> {{vehicle.driver.person.first_name}} </li>
+                            <li class="list-group-item"><strong>Total Distance Travelled Today:</strong> {{totaldistance}} Km </li>
+
+                        </ul>
+                        </h4></span>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="{{MEDIA_URL}}/{{vehicle.image}}" class="img-thumbnail img-responsive" alt="Car">
+                    </div>
+                </div>
+
+                <div class="row" style="padding-top: 75px;padding-right: 50px; ">
+                     <div class="col-lg-2"></div>
+                     <div class="col-lg-8">
+                        <canvas id="canvas" width=100 height=50 />
+                            <script>
+                                var canvas = document.getElementById("canvas");
+                                var ctx = canvas.getContext("2d");
+
+                                var dat = {
+                                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                    datasets: [
+                                    {
+                                        label: "Distance in Km",
+                                        fillColor: "rgba(151,187,205,0)",
+                                        strokeColor: "rgba(151,187,205,1)",
+                                        pointColor: "rgba(151,187,205,1)",
+                                        backgroundColor: "rgba(0,255,0,0.4)",
+                                        data: [65, 59, 80, 81, 56, 55, 40]
+                                    }
+                                    ]
+                                };
+
+
+                                var myNewChart = new Chart(ctx , {
+                                    type: "line",
+                                    data: dat, 
+                                });
+                            </script>
+                         </div>   
+                </div>
+                    {% if not from_download%}
+                    <div class="row" style="padding-top: 75px;padding-right: 50px; ">
+                        <a href="/pdf/{{user.id}}/{{vehicle.id}}/" class="btn btn-xs btn-default fa-border pull-right" id="floating-button">
+                        <span class="fa-stack fa fa.pull-right">
+                            <i class="fa fa-file-pdf-o fa-stack-1x "></i>
+                        </span>Download PDF
+                        </a>
+                    </div>
+                    {%endif%}
+            </div>

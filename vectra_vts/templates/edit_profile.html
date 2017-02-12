@@ -1,0 +1,138 @@
+{% load static %}
+    {% include 'header.html' %}
+        
+    <div id="wrapper">
+            {% include 'sidebar.html' %}
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="well">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-group" method="post" action="/dashboard/dashboard/edit_profile/{{user.id}}/" enctype="multipart/form-data">
+			{% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h2 class="form-heading pull-left">Edit User</h2>
+                                </div>
+                                <div class="col-sm-8">
+                                    &nbsp;                         
+                                </div>   
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h5 class="form-heading pull-left">Email</h5>
+                                </div>
+                                <div class="col-sm-8">
+                                   &nbsp;                   
+                                </div>   
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="Email" class="sr-only">Email</label>
+                                    <input name="Email" type="text" value="{{user.email}}" class="form-control " required disabled="" placeholder="{{user.email}}" maxlength="20"/>
+                                </div>
+                                <div class="col-sm-8">
+                                    &nbsp;                 
+                                </div>   
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h5 class="form-heading pull-left">First Name</h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5 class="form-heading pull-left">Middle Name</h5>                 
+                                </div>
+                                <div class="col-sm-4">
+                                   <h5 class="form-heading pull-left">Last Name</h5>                    
+                                </div>   
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="first_name" class="sr-only">First Name</label>
+                                    <input name="first_name" type="text" value="{{user.person.first_name}}" class="form-control " placeholder="{{user.person.first_name}}" maxlength="20"/>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="middle_name" class="sr-only">Middle Name</label>
+                                    <input name="middle_name" type="text" value="{{user.person.middle_name}}" class="form-control "  placeholder="{{user.person.middle_name}}" maxlength="20"/>              
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="last_name" class="sr-only">Last Name</label>
+                                    <input name="last_name" type="text" value="{{user.person.last_name}}" class="form-control "  placeholder="{{user.person.last_name}}" maxlength="20"/>                   
+                                </div>   
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h5><span>Sex</span></h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5><span>Birth Day</span></h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label class="radio-inline"><input type="radio" name="sex" value="Male"  {%if user.person.sex == 'M' or user.person.sex == 'Male'  %} checked {%endif%}>Male</label>
+                                    <label class="radio-inline"><input type="radio" name="sex" value="Female" {%if user.person.sex == 'Female' or  user.person.sex == 'F' %} checked {%endif%}>Female</label>
+			
+                                </div>
+                                <div class="col-sm-1">
+                                    &nbsp;
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="birthday" class="sr-only">Birthday</label>
+                                    <input class="form-control" id="date" name="birthday" disabled="" placeholder="{{user.person.birthday}}" type="text"/>
+                                </div>
+                                <div class="col-sm-3">
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h5 class="form-heading pull-left">Phone Number</h5>
+                                </div>
+                                <div class="col-sm-8">
+                                    <h5 class="form-heading pull-left">Address</h5>                 
+                                </div> 
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="tel" class="sr-only">Phone</label>
+                                    <input name="tel" type="text" value="{{user.person.tel}}" class="form-control " placeholder="{{user.person.tel}}" default="" maxlength="16"/>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="address" class="sr-only">Address</label>
+                                    <input name="address" type="textarea" value="{{user.person.address}}" class="form-control "  placeholder="{{user.person.address}}" maxlength="100"/>              
+                                </div> 
+			        <div class="col-sm-4">
+                                    <label >Change Profile Pic</label>
+                                    <input id ="id_photo" name="photo" type="file" />          
+                                </div>
+                            </div>
+                            </br></br>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    &nbsp;
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-lg btn-default btn-block" type="submit">Save</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-lg btn-default btn-block" type="cancel">Cancel</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+
+    </div><!-- /#wrapper -->
+    <!-- jQuery -->
+{% include 'footer.html' %}

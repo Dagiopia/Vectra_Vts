@@ -1,0 +1,20 @@
+.panel a{
+	text-decoration: none;
+}
+#addButton{
+	margin-bottom: 10px;
+	width: 150px; 
+	height: 30px;
+}
+/*#edit_delete li{
+	text-decoration: none;
+	display: inline;
+	padding-right:  10px;
+}*/
+#floating-button{
+	text-align: left;
+	width: 120px;
+	margin-bottom: 10px; 
+	border: 1px solid transparent;
+  	border-radius: 4px;
+}

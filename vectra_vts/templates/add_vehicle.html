@@ -1,0 +1,137 @@
+{% load static %}
+    {% include 'header.html' %}
+        
+    <div id="wrapper">
+            {% include 'sidebar.html' %}
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="well">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-group" method="post" action="/dashboard/add_vehicle/{{user.id}}/" enctype="multipart/form-data">
+			{% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h2 class="form-heading pull-left">Add Vehicle</h2>
+                                </div>
+                                <div class="col-sm-8">
+                                    &nbsp;                         
+                                </div>   
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h5 class="form-heading pull-left">Plate Number</h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5 class="form-heading pull-left">Vehicle Name</h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5 class="form-heading pull-left">Gps Device Id</h5>                  
+                                </div>   
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="plate_number" class="sr-only">Plate Number</label>
+                                    <input name="plate_number" type="text" value="" class="form-control " required placeholder="AA-2-(A)12345" maxlength="11"/>
+                                </div> 
+                                <div class="col-sm-4">
+                                    <label for="name" class="sr-only">Vehicle Name</label>
+                                    <input name="name" type="text" value="" class="form-control " required placeholder="Vehicle Name" maxlength="25"/>
+                                </div>  
+                                <div class="col-sm-4">
+                                    <label for="gps" class="sr-only">Gps Device Id</label>
+                                    <input name="gps" type="text" value="" class="form-control " required placeholder="123456789" maxlength="25"/>
+                                </div>                                
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h5><span>Brand Name</span></h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5><span>Model Number</span></h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5><span>Engine CC</span></h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="brand_name" class="sr-only">Brand Number</label>
+                                    <input name="brand_name" type="text" value="" class="form-control " required placeholder="TOYOTA" maxlength="50"/>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="v_model" class="sr-only">Model Number</label>
+                                    <input name="v_model" type="text" value="" class="form-control " required placeholder="Model Number" maxlength="10"/>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="engine_cc" class="sr-only">Engine CC</label>
+                                    <input name="engine_cc" type="number" value="" class="form-control " required placeholder="1200" maxlength="4"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h5 class="form-heading pull-left">Color</h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5 class="form-heading pull-left">Photo</h5>                 
+                                </div>
+                                <div class="col-sm-2">
+                                    <h5 class="form-heading pull-left">Status</h5>
+				</div>
+				<div class"col-sm-2">	  
+				    <h5 class="form-heading pull-left">Assign Vehicle</h5>              
+                                </div> 
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="color" class="sr-only">Color</label>
+                                    <input name="color" type="text" value="" class="form-control " required placeholder="Gubet Color" maxlength="20"/>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="btn btn-default btn-file">
+                                    Upload <input name="image" type="file" style="display: none;" accept="image/*"/>
+                                    </label>
+                                </div>
+                                <div class="col-sm-2">
+                                   <select id="id_status" name="status" class="form-control " required>
+					<option value="" selected="selected">---------</option>
+					<option value="A">active</option>
+					<option value="D">not active</option>
+				   </select>
+				</div>
+				<div class="col-sm-2">
+				   <select id="id_assign" name="assign" class="form-control ">
+					<option value="" selected="selected">---------</option>
+					{%for driver in drivers %}
+						<option value="{{driver.id}}">{{driver.person.first_name}}
+						</option>
+					{%endfor%}
+				   </select>
+				
+                                </div>
+                            </div>
+                            </br></br>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    &nbsp;
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-lg btn-default btn-block" type="submit">Add</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-lg btn-default btn-block" type="cancel">Cancel</button>
+                                </div>
+                                <div class="col-sm-2">
+                                    {{errors}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div><!-- /#wrapper -->
+    <!-- jQuery -->
+{% include 'footer.html' %}

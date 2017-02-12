@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Icon -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+
+    <title>ADMIN PAGE</title>
+    
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vehicle.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome-4.3.0/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome-4.3.0/css/font-awesome.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-default no-margin navbar-fixed-top">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right" id="Profile" >
+                <li><a href="/admin_dashboard/add_user/"  class="btn btn-primary active" role="button">Add User</a></li>
+
+            </ul>   
+        </div>
+    </nav>   
+    <div id="page-content-wrapper">
+            <div class="well">
+                <div class="row">
+                    <div class="col-lg-12">				
+		    <form id="user_form" method="post" action="/admin_dashboard/add_user/" enctype="multipart/form-data" class="form-group">
+				{% csrf_token %}
+				<div class="row">
+                    <div class="col-sm-4">
+                        <h2 class="form-heading pull-left">
+                        	Add User
+							{% if registered %}
+					    	<strong>thank you for adding user!</strong>
+							<a href="#">Return to the homepage.</a><br />
+							{% else %}
+                        </h2>
+                    </div>
+                    <div class="col-sm-8">
+                        &nbsp;                         
+                    </div>   
+                </div>
+                <div class="row">
+                	<div class="col-sm-4">
+                		<h3>First Name</h3>
+                	</div>
+                	<div class="col-sm-4">
+                		<h3>Middle Name</h3>
+                	</div>
+                	<div class="col-sm-4">
+                		<h3>Last Name</h3>
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-4">
+                		<h3>First Name</h3>
+						<p> <input id="id_first_name" maxlength="20" class="form-control " name="first_name" type="text" required /></p>
+                	</div>
+                	<div class="col-sm-4">
+                		<h3>Middle Name</h3>
+						<p> <input id="id_middle_name" maxlength="20" class="form-control " name="middle_name" type="text" required /></p>
+                	</div>
+                	<div class="col-sm-4">
+                		<h3>Last Name</h3>		
+						<p> <input id="id_last_name"  maxlength="20" class="form-control " name="last_name" type="text" required /></p>
+                	</div>
+                </div>
+                 <div class="row">
+            		<div class="col-sm-4">
+            			<h3>Sex</h3>
+                    </div>
+                    <div class="col-sm-4">
+                    	<h3>BirthDay</h3>
+                    </div>
+                    <div class="col-sm-4">
+                    	<h3>Tel</h3>
+                    </div>
+                </div>
+                <div class="row">
+            		<div class="col-sm-4">
+                        <label class="radio-inline"><input type="radio" name="Sex" value="Male"  checked>Male</label>
+                        <label class="radio-inline"><input type="radio" name="Sex" value="Female" >Female</label>
+                    </div>
+                    <div class="col-sm-4">
+                    	<h3>BirthDay</h3>
+						<p> <input id="id_birthday" name="birthday" type="text" /></p>
+                    </div>
+                    <div class="col-sm-4">
+                    	<h3>Tel</h3>
+						<p><input id="id_tel" maxlength="14" name="tel" class="form-control " type="text" required /></p>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-6">
+                		<h3>Address</h3>
+                	</div>
+                	<div class="col-sm-6">
+                		<h3>Profile Pic</h3>
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-6">
+                		<h3>Address</h3>
+						<p><textarea cols="40" id="id_address" name="address"  class="form-control " rows="1" required>
+					   	   </textarea>
+						</p>
+                	</div>
+                	<div class="col-sm-6">
+                		<h3>Profile Pic</h3>
+						<p> <input id="id_photo" name="photo" type="file" /></p>
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-6">
+                		<h3>User name</h3>
+                	</div>
+                	<div class="col-sm-6">
+                		<h3>Email</h3>
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-6">
+                		<h3>User name</h3>
+						<p> <input id="id_username" maxlength="30" name="username" class="form-control " type="text" required /></p>
+                	</div>
+                	<div class="col-sm-6">
+                		<h3>Email</h3>
+						<p> <input id="id_email" maxlength="200" name="email" class="form-control " type="email" required /></p>
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-6">
+                		<h3>Password</h3>
+                	</div>
+                	<div class="col-sm-6">
+                		&nbsp;
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-6">
+                		<h3>Password</h3>
+						<p> <input id="id_password" maxlength="30" name="password" class="form-control " type="password" required /></p>
+                	</div>
+                	<div class="col-sm-6">
+                		&nbsp;
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-6">
+                		<h3>Secret Question</h3>
+                	</div>
+                	<div class="col-sm-6">
+                		<h3>Answer</h3>		
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-6">
+                		<h3>Secret Question</h3>
+						<p><textarea cols="40" id="id_question" name="question" class="form-control " rows="2" required>
+						</textarea>
+						</p>
+                	</div>
+                	<div class="col-sm-6">
+                		<h3>Answer</h3>		
+						<p><textarea cols="40" id="id_answer" name="answer" class="form-control " rows="2" required></textarea></p>
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-6">
+                		&nbsp;
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-8">
+                		&nbsp;
+                	</div>
+                	<div class="col-sm-4">
+                		<button class="btn btn-lg btn-default btn-block" value="submit" type="submit">Submit</button>
+                	</div>
+                </div>		
+			</form>
+				
+			{% endif %}
+	    </div>
+	</div> 
+	         			
+</body>
+</html>

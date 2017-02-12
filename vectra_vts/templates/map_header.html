@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <!-- Icon -->
+    <link rel="icon" href="Img/favicon.ico">
+
+    <title>Map</title>
+    
+    <link href="{% static  'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static  'css/simple-sidebar.css' %}" rel="stylesheet">
+    <link href="{% static  'font-awesome-4.3.0/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static  'font-awesome-4.3.0/css/font-awesome.css' %}" rel="stylesheet">
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB1tbIAqN0XqcgTR1-FxYoVTVq6Is6lD98&sensor=false">
+</script>
+
+
+<script type="text/javascript">
+
+//locations = {{locations}};
+
+function initialize() {
+//alert("Initializing...");
+    {% if alert %}
+	alert("vehicle not found");
+    {%endif%}
+    var myOptions = {
+      center: new google.maps.LatLng({{zoom_lat}},{{zoom_long}}),
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("mapping_area"),
+        myOptions);
+
+sleep(1000);
+    place_balloons(map)
+}
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
+function place_balloons(map){
+	//alert("Placing balloons");
+	var marker, i
+
+	{% for vehicle, location in vehicle_location_pair.items %}
+		var lat = {{location.latituide_pos}};
+		var long = {{location.longtuide_pos}};
+		var Name = "{{vehicle.name}}";
+		latlngset = new google.maps.LatLng(lat, long);
+		var marker = new google.maps.Marker({  
+		  map: map, 
+		  title: Name , 
+		  position: latlngset  
+		});
+		map.setCenter(marker.getPosition())
+
+		time_n = 'Wednesday, January 11, 2017'
+		var content = "Name: " + Name +  '\nTime: ' + time_n
+
+		var infowindow = new google.maps.InfoWindow()
+
+
+		google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+		return function() {
+			infowindow.setContent(content);
+			infowindow.open(map,marker);
+		};
+		})(marker,content,infowindow)); 
+	sleep(50);
+	{% endfor %}
+	//alert("this many locations = "+locations.length);
+}
+
+
+
+  </script>
+
+
+</head>
+
+<body onload="initialize()">
+    <nav class="navbar navbar-default no-margin navbar-fixed-top">
+    <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header fixed-brand">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+              <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+            </button>
+            <a class="navbar-brand" href="/dashboard/dashboard/{{user.id}}/"><i class="fa fa-home fa-4"></i> Vectra VTS</a>     
+        </div><!-- navbar-header-->
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button></li>
+            </ul>
+
+            <!-- Profile and signout Navbar -->
+            <ul class="nav navbar-nav navbar-right" id="Profile" >
+	            	<li>
+
+	            	<form class="navbar-form" role="search" action = "/dashboard/search_vehicle/{{user.id}}/" method = "post" enctype="multipart/form-data">	
+				
+	            		<input type="text" name = "item" class="form-control" placeholder="Search...">
+				<button type="submit" class="btn btn-default">Search</button>
+
+
+
+	          	</form>
+          		</li>
+                <li><a href="/dashboard/dashboard/profile/{{user.id}}/" class="fa fa-user fa-stack-1x ">  Profile</a></li>
+                <li><a href="/user_logout/"  class="fa fa-sign-out fa-stack-1x ">  Sign Out</a></li>
+            </ul>   
+        </div><!-- bs-example-navbar-collapse-1 -->
+
+    </nav>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                <!-- separater -->
+                <li role="separator" class="divider"></li>
+
+                <!-- Profile Tab -->
+                <li>
+                    <a href="/dashboard/dashboard/profile/{{user.id}}/">
+                        <span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span> Profile
+                        <!-- <span class="fa-stack fa-lg pull-right"><i class="fa fa-caret-down fa-stack-1x "></i></span> -->
+                    </a>
+                    <!-- <ul class="nav-pills nav-stacked">
+                        <li>
+                            <a href="view_profile.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-file-text-o fa-stack-1x "></i></span>View Profile</a>
+                        </li>
+                        <li>
+                            <a href="edit_profile.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-edit fa-stack-1x "></i></span>Edit Profile</a>
+                        </li>
+                    </ul> -->
+                </li>
+
+                <!-- Sign out Tab -->
+                <li><a href="/user_logout/" ><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-out fa-stack-1x "></i></span> Sign Out</a></li>
+                
+                <!-- separater -->
+                <li role="separator" class="divider"></li>
+
+                <!-- Map Tab -->
+                <li class="active">
+                    <a href="/dashboard/dashboard/{{user.id}}/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-map-marker fa-stack-1x "></i></span> Map</a>
+                </li>
+
+                <!-- Vehicle Tab -->
+                <li>
+                    <a href="/dashboard/manage_vehicles/{{user.id}}/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-car fa-stack-1x "></i></span> Vehicles
+                    <!-- <span class="fa-stack fa-lg pull-right"><i class="fa fa-caret-down fa-stack-1x "></i></span> --></a>
+                    <!-- <ul class="nav-pills nav-stacked">
+                        <li>
+                            <a href="view_vehicle.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-file-text-o fa-stack-1x "></i></span>View Vehicles</a>
+                        </li>
+                        <li>
+                            <a href="add_vehicle.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-plus-circle fa-stack-1x "></i></span>Add Vehicle</a>
+                        </li>
+                        <li>
+                            <a href="edit_vehicle.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-edit fa-stack-1x "></i></span>Edit Vehicle</a>
+                        </li>
+                    </ul> -->
+                </li>
+
+                <!-- Drivers Tab -->
+                <li>
+                    <a href="/dashboard/manage_drivers/{{user.id}}/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-male fa-stack-1x "></i></span>Drivers
+                    <!-- <span class="fa-stack fa-lg pull-right"><i class="fa fa-caret-down fa-stack-1x "></i></span> --></a>
+                    <!-- <ul class="nav-pills nav-stacked">
+                        <li>
+                            <a href="view_driver.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-file-text-o fa-stack-1x "></i></span>View Drivers</a>
+                        </li>
+                        <li>
+                            <a href="add_driver.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-plus-circle fa-stack-1x "></i></span>Add Driver</a>
+                        </li>
+                        <li>
+                            <a href="edit_driver.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-edit fa-stack-1x "></i></span>Edit Driver</a>
+                        </li>
+                    </ul> -->
+                </li>
+
+                <!-- Separeter -->
+                <li role="separator" class="divider"></li>
+
+                <!-- Report Tab -->
+                <li>
+                    <a href="/report/{{user.id}}/"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>Report</a>
+                </li>
+
+                 <!-- Separeter -->
+                <li role="separator" class="divider"></li>
+
+                 <!-- Other Info Tab -->
+                <li>
+                    <a href="/help/{{user.id}}/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wrench fa-stack-1x "></i></span>Help</a>
+                    <a href="/about/{{user.id}}/"><span class="fa-stack fa-lg pull-left"><i class="fa fa-compass fa-stack-1x "></i></span>About</a>
+                </li>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->

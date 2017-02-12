@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Icon -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+
+    <title>Add User</title>
+    
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/vehicle.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome-4.3.0/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome-4.3.0/css/font-awesome.css' %}" rel="stylesheet">
+</head>
+	<body>
+		<div class = "container">
+			<div class  = "col-md-4"></div>
+			<div class  = "col-md-4">	
+			<h1>Add User</h1>
+			{% if registered %}
+		    <strong>thank you for adding user!</strong>
+			<a href="#">Return to the homepage.</a><br />
+			{% else %}
+			
+	      <form id="user_form" method="post" action="/admin_dashboard/add_user/" enctype="multipart/form-data">
+			{% csrf_token %}
+		<hr>
+		<h3>First Name</h3>
+		<p> <input id="id_first_name" maxlength="50" name="first_name" type="text" required /></p>
+	
+		<h3>Middle Name</h3>
+		<p> <input id="id_middle_name" maxlength="50" name="middle_name" type="text" required /></p>
+		<h3>Last Name</h3>		
+		<p> <input id="id_last_name"  maxlength="50" name="last_name" type="text" required /></p>
+		<h3>Sex</h3>
+		<p><input id="id_sex" maxlength="2" name="sex" 		  type="text" required /></p>
+		<h3>BirthDay</h3>
+		<p> <input id="id_birthday" name="birthday" type="text" /></p>
+		<h3>Tel</h3>
+		<p><input id="id_tel" maxlength="14" name="tel" type="text" required /></p>
+		<h3>Address</h3>
+		<p><textarea cols="40" id="id_address" name="address" rows="1" required>
+		</textarea></p>
+		<h3>Profile Pic</h3>
+		<p> <input id="id_photo" name="photo" type="file" /></p>
+		<h3>User name</h3>
+		<p> <input id="id_username" maxlength="30" name="username" type="text" required /></p>
+				
+		<h3>Email</h3>
+		<p> <input id="id_email" maxlength="200" name="email" type="email" required /></p>
+		<h3>Password</h3>
+		<p> <input id="id_password" maxlength="30"name="password" type="text" required /></p>
+		<h3>Secret Question</h3>
+		<p><textarea cols="40" id="id_question" name="question" rows="2" required>
+		</textarea></p>
+		<h3>Answer</h3>		
+		<p><textarea cols="40" id="id_answer" name="answer" rows="2" required></textarea></p>
+
+		<button class="btn  btn-primary btn-block submit" value="submit" type="submit">Submit</button>
+			
+		</form>
+			
+		{% endif %}
+	    </div>
+	</div>
+
+	</body>
+</html>
