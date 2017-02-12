@@ -1,7 +1,5 @@
 **========= Vecta Vts =========**
 
-.. image:: https://github.com/danenigma/Vectra_Vts/blob/master/Screenshot.png?raw=true
-
 **Dependancies:**
     
     * Django==1.10.4
